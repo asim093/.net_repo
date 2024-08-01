@@ -1,0 +1,31 @@
+﻿@model IEnumerable<landingpage.Models.Item>
+
+@{
+    ViewData["Title"] = "Products";
+    Layout = "~/Views/Shared/_layout.cshtml";
+}
+
+
+
+<div class="row">
+    @foreach (var item in Model)
+    {
+        <div class="col-sm-12 col-md-6 col-lg-4 mt-5 pt-5" style="overflow: hidden">
+            <div class="card" style="max-width: 70%; margin-left: 5rem; margin-bottom: 2rem">
+                @if (!string.IsNullOrEmpty(item.Pimage))
+                {
+                    <div class="card-img-container">
+                        <img src="@item.Pimage" height="300px" class="card-img" alt="@item.Name" />
+                    </div>
+                }
+                <div class="card-body">
+                    <h5 class="card-title">@item.Name</h5>
+                    <p class="card-text">@item.Description</p>
+                    <p class="card-text"><strong>Price:</strong> @item.Price</p>
+                    <p class="card-text"><strong>Category:</strong> @item.Cat?.CatName</p>
+                    
+                </div>
+            </div>
+        </div>
+    }
+</div>
